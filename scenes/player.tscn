@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1copjjx44t2y"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_dv5h6"]
+[ext_resource type="Texture2D" uid="uid://bgvnkekje1j3n" path="res://assets/galinha/baixo/sprite_0.png" id="2_250ln"]
+[ext_resource type="Texture2D" uid="uid://c1abjpcdu5r15" path="res://assets/galinha/baixo/sprite_1.png" id="3_f45f3"]
+[ext_resource type="Texture2D" uid="uid://bgctissinece2" path="res://assets/galinha/baixo/sprite_2.png" id="4_4vcbk"]
+[ext_resource type="Texture2D" uid="uid://bf26ada2i37lf" path="res://assets/galinha/cima/sprite_0.png" id="5_q7xpl"]
+[ext_resource type="Texture2D" uid="uid://cnsq3k60vik4r" path="res://assets/galinha/cima/sprite_1.png" id="6_5eu3r"]
+[ext_resource type="Texture2D" uid="uid://cg2qnldibmea7" path="res://assets/galinha/cima/sprite_2.png" id="7_q8aho"]
+[ext_resource type="AudioStream" uid="uid://di20knj66ir1g" path="res://assets/sons/colide.wav" id="8_5gjad"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8010k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_250ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f45f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4vcbk")
+}],
+"loop": true,
+"name": &"down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_q7xpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5eu3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q8aho")
+}],
+"loop": true,
+"name": &"up",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wk1c"]
+radius = 15.0
+
+[node name="player" type="Area2D"]
+script = ExtResource("1_dv5h6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_8010k")
+animation = &"down"
+frame = 1
+frame_progress = 0.501027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7wk1c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_5gjad")
