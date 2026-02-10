@@ -22,3 +22,10 @@ func _process(delta: float) -> void:
 		direction = direction.normalized() * SPEED
 
 	position += direction * delta
+	
+	if direction.y > 0:
+		$AnimatedSprite2D.play("down")
+	if direction.y < 0:
+		$AnimatedSprite2D.play("up")
+	else:
+		$AnimatedSprite2D.stop()
