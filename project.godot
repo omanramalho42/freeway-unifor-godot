@@ -11,10 +11,17 @@ config_version=5
 [application]
 
 config/name="freeway-oman"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://scenes/player.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="finish_line"
+2d_physics/layer_3="car"

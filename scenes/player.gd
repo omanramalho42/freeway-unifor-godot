@@ -29,3 +29,11 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("up")
 	else:
 		$AnimatedSprite2D.stop()
+
+
+func _on_body_entered(body):
+	if body.name == 'finish_line':
+		emit_signal('point')
+	else:
+		$Audio.play()
+		position = INITIAL_POSITION
