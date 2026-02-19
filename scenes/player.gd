@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.stop()
 
-
 func _on_body_entered(body):
 	if body.name == 'finish_line':
 		emit_signal('point')

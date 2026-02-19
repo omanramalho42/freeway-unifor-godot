@@ -1,12 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://bee6mmnn8xpeh"]
+[gd_scene load_steps=8 format=3 uid="uid://bee6mmnn8xpeh"]
 
 [ext_resource type="PackedScene" uid="uid://c1copjjx44t2y" path="res://scenes/player.tscn" id="1_77axo"]
+[ext_resource type="Texture2D" uid="uid://cfq08xmrt5eeb" path="res://assets/wallpaperfreeway.png" id="1_breu7"]
 [ext_resource type="PackedScene" uid="uid://c2rldveebsujl" path="res://scenes/finish_line.tscn" id="2_4vof2"]
+[ext_resource type="AudioStream" uid="uid://ce31wem5pp8ky" path="res://assets/sons/tema.wav" id="4_xhfih"]
+[ext_resource type="AudioStream" uid="uid://bbw82dr5ojs07" path="res://assets/sons/ponto.wav" id="5_xypxd"]
+[ext_resource type="AudioStream" uid="uid://cpp7ft2x3s4w1" path="res://assets/sons/ganhou.wav" id="6_mjk7i"]
+[ext_resource type="PackedScene" uid="uid://8abqjbggrhhn" path="res://scenes/hud.tscn" id="7_fiosp"]
 
 [node name="Main" type="Node"]
 
 [node name="road" type="Sprite2D" parent="."]
+texture = ExtResource("1_breu7")
+centered = false
 
 [node name="player" parent="." instance=ExtResource("1_77axo")]
+position = Vector2(640, 690)
 
 [node name="finishLine" parent="." instance=ExtResource("2_4vof2")]
+position = Vector2(640, 64)
+
+[node name="TimerFastCars" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="TimerSlowCars" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="audiotema" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xhfih")
+
+[node name="audiodot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xypxd")
+
+[node name="audiovictory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mjk7i")
+
+[node name="HUD" parent="." instance=ExtResource("7_fiosp")]
